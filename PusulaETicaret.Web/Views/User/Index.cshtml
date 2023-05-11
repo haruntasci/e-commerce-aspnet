@@ -1,0 +1,62 @@
+﻿@model List<UserViewModel>
+@{
+    ViewData["Title"] = "Kullanıcılar";
+}
+
+<div class="row">
+    <div class="col">
+        <h1 class="display-6">@ViewData["Title"] Sayfası</h1>
+        <hr />
+    </div>
+</div>
+
+<div class="row mb-3">
+    <div class="col">
+        <a asp-action="Create" class="btn btn-primary btn-sm"><i class="fa fa-plus me-2"></i>Kullanıcı Oluştur</a>
+    </div>
+</div>
+
+<div class="row mb-3">
+    <div class="col">
+        <table class="table table-hover table-sm">
+            <thead>
+                <tr>
+                    <th>Ad Soyad</th>
+                    <th>Kullanıcı Adı</th>
+                    <th>Hesabı Dondur</th>
+                    <th>Rol</th>
+                    <th>Oluşturulma Tarihi</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in Model)
+                {
+                    <tr>
+                        <td>@user.FullName</td>
+                        <td>@user.Username</td>
+                        <td>
+                            @if (user.Locked)
+                            {
+                                <i class="fa fa-check text-success"></i>
+                            }
+                            else
+                            {
+                                <i class="fa fa-times text-danger"></i>
+                            }
+                    </td>
+                    <td>@user.Role</td>
+                    <td>@user.CreatedAt</td>
+                    <td class="text-end">
+                        <a asp-action="Edit" asp-route-id="@user.Id" class="btn btn-info btn-sm text-white"><i class="fa fa-edit me-2"></i>Düzenle</a>
+                        <a asp-action="Delete" asp-route-id="@user.Id"
+                           onclick="return confirm('Bu kullanıcıyı silmek istediğinizden emin misiniz @user.Username ?')"
+                           class="btn btn-danger btn-sm"><i class="fa fa-trash me-2"></i>Sil</a>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+
+</div>

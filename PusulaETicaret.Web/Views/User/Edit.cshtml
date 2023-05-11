@@ -1,0 +1,49 @@
+﻿@model EditUserViewModel
+@{
+    ViewData["Title"] = "Kullanıcıyı Düzenle";
+}
+
+
+<div class="row">
+    <div class="col-4 offset-4 mb-3">
+        <h1 class="display-5 border-bottom text-center pb-2">@ViewData["Title"]</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-4 offset-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger small"></div>
+            <div class="form-group mb-3">
+                <label asp-for="FullName" class="form-label">Ad Soyad</label>
+                <input asp-for="FullName" class="form-control" placeholder="John Doe" />
+                <span class="text-danger small" asp-validation-for="FullName"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="Username" class="form-label">Kullanıcı Adı</label>
+                <input asp-for="Username" class="form-control" placeholder="johndoe" />
+                <span class="text-danger small" asp-validation-for="Username"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="Role" class="form-label">Rol</label>
+                <select asp-for="Role" class="form-select">
+                    <option value="">Lütfen seçiniz</option>
+                    <option value="admin">Admin</option>
+                    <option value="user">Kullanıcı</option>
+                </select>
+                <span asp-validation-for="Role" class="text-danger small"></span>
+            </div>
+            <div class="form-group mb-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" asp-for="Locked">
+                    <label class="form-check-label" asp-for="Locked">
+                        Hesabı Dondur
+                    </label>
+                </div>
+            </div>
+            <div class="form-group mb-3 ">
+                <button type="submit" class="btn btn-primary"><i class="fa-solid fa-save me-2"></i>Kaydet</button>
+            </div>
+        </form>
+    </div>
+</div>

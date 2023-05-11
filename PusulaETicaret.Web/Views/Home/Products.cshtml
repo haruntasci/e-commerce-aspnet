@@ -1,0 +1,29 @@
+﻿@model List<ProductsViewModel>
+@{
+    ViewData["Title"] = "Ürün Listesi";
+}
+
+<div class="text-center mb-3">
+    <h1 class="display-4">Ürünler</h1>
+</div>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-4 mb-1">
+            <div class="card p-3">
+                <img src="/images/@item.Image" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">@item.ProductName</h5>
+                    <div>Fiyat: @item.ProductPrice.ToString("#,##0.00") TL</div>
+                    <div class="mb-2">Id: @item.ProductId</div>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <a class="btn btn-primary" asp-controller="cart" asp-action="add" asp-route-id="@item.ProductId">Sepete Ekle<i class="fa-solid fa-cart-shopping ms-1"></i></a>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+
+</div>

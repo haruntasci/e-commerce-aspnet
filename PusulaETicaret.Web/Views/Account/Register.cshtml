@@ -1,0 +1,51 @@
+﻿@model RegisterViewModel
+@{
+    ViewData["Title"] = "Kaydol";
+}
+
+<div class="row">
+    <div class="col-4 offset-4">
+        <h1 class="display-4 border-bottom text-center pb-3">@ViewData["Title"]</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-4 offset-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger small"></div>
+
+            <div class="mb-3">
+                <label asp-for="Fullname" class="form-label">Ad Soyad</label>
+                <input asp-for="Fullname" class="form-control" placeholder="Harun Taşcı" />
+                <span asp-validation-for="Fullname" class="text-danger small"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Username" class="form-label">Kullanıcı Adı</label>
+                <input asp-for="Username" class="form-control" placeholder="haruntasci" />
+                <span asp-validation-for="Username" class="text-danger small"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Password" class="form-label">Şifre</label>
+                <input asp-for="Password" type="password" class="form-control" placeholder="P@ssW0rd!" />
+                <span asp-validation-for="Password" class="text-danger small"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="RePassword" class="form-label">Şifre Tekrar</label>
+                <input asp-for="RePassword" type="password" class="form-control" placeholder="P@ssW0rd!" />
+                <span asp-validation-for="RePassword" class="text-danger small"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="Role" class="form-label">Rol</label>
+                <select asp-for="Role" class="form-select">
+                    <option value="">Lütfen seçiniz</option>
+                    <option value="admin">Admin</option>
+                    <option value="user">Kullanıcı</option>
+                </select>
+                <span asp-validation-for="Role" class="text-danger small"></span>
+            </div>
+            <div class="mb-3 d-grid">
+                <button type="submit" class="btn btn-primary d-block"><i class="fa-solid fa-paper-plane me-2"></i>Kaydol</button>
+            </div>
+        </form>
+    </div>
+</div>
